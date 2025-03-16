@@ -5,13 +5,13 @@ from Plot.AnimatePlotDriver import CAnimateDriver
 from Plot.PlotDriver import CPlotDriver
 
 if __name__ == "__main__":
-    code = "sz.000001"
-    begin_time = "2018-01-01"
+    code = "sh.600887"
+    begin_time = "2024-09-01"
     end_time = None
     data_src = DATA_SRC.BAO_STOCK
-    lv_list = [KL_TYPE.K_DAY]
+    lv_list = [KL_TYPE.K_5M]
 
-    config = CChanConfig({
+    config = CChanConfig({  
         "bi_strict": True,
         "trigger_step": False,
         "skip_step": 0,
@@ -53,7 +53,7 @@ if __name__ == "__main__":
             # "disp_end": True,
         },
         "figure": {
-            "x_range": 200,
+            "x_range": 1200,  # 修改显示K线的数量
         },
         "marker": {
             # "markers": {  # text, position, color
@@ -67,9 +67,9 @@ if __name__ == "__main__":
         begin_time=begin_time,
         end_time=end_time,
         data_src=data_src,
-        lv_list=lv_list,
+        lv_list=lv_list,     
         config=config,
-        autype=AUTYPE.QFQ,
+        autype=AUTYPE.QFQ,    # 前复权
     )
 
     if not config.trigger_step:
@@ -79,7 +79,7 @@ if __name__ == "__main__":
             plot_para=plot_para,
         )
         plot_driver.figure.show()
-        plot_driver.save2img("./test.png")
+        plot_driver.save2img(f"pics/{code}-{str(lv_list[0].value)}.png")
     else:
         CAnimateDriver(
             chan,

@@ -8,3 +8,13 @@ config.yaml
 OpenConfig.yaml
 gotify_push.py
 cos_config.yaml
+pics/
+*.txt
+*.json
+*.csv
+*.jsonl
+*.jsonl.gz
+*.jsonl.tar.gz
+*.jsonl.tar.gz.part
+test.*
+*.ipynb
